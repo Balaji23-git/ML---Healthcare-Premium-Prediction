@@ -8,7 +8,7 @@ st.subheader("Enter Customer Details")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    age = st.number_input("Age", min_value=0, max_value=100, step=1)
+    age = st.number_input("Age", min_value=18, max_value=100, step=1)
 
 with col2:
     number_of_dependants = st.number_input(
@@ -104,6 +104,7 @@ input_data = {
 
 if st.button("🔮 Predict Premium"):
     p = predict(input_data)
-    st.success(f'Prediction value: {p}')
+    st.success(f'Prediction value: ₹ {p[0]:,.2f}')
+
     
 
