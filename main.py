@@ -104,7 +104,27 @@ input_data = {
 
 if st.button("🔮 Predict Premium"):
     p = predict(input_data)
-    st.success(f'Prediction value: ₹ {p[0]:,.2f}')
+
+    premium = p[0]
+    monthly = premium / 12
+
+    st.markdown("---")
+    st.subheader("💰 Estimated Insurance Premium")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric("Annual Premium", f"₹ {premium:,.2f}")
+
+    with col2:
+        st.metric("Monthly Premium", f"₹ {monthly:,.2f}")
+
+    if premium < 20000:
+        st.success("Low premium category")
+    elif premium < 40000:
+        st.warning("Moderate premium category")
+    else:
+        st.error("High premium category")
 
     
 
